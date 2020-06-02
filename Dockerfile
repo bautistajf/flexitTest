@@ -1,5 +1,5 @@
 FROM openjdk:8
-ARG JAR_FILE=target/*.jar
+VOLUME /tmp
 EXPOSE 8080
-COPY ${JAR_FILE} fluxit-service.jar
+ADD ./target/flexit-0.0.1-SNAPSHOT.jar fluxit-service.jar
 ENTRYPOINT ["java","-jar","/fluxit-service.jar"]
