@@ -12,12 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.flexit.model.Employee;
 import com.flexit.service.EmployeeService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("employees")
 @CrossOrigin(origins = "*")
 @Slf4j
+@Api(value="Employee resource rest endpoint")
 public class EmployeeController {
 
 	private final EmployeeService employeeService;
@@ -27,11 +30,13 @@ public class EmployeeController {
 		this.employeeService = employeeService;
 	}
 	
+	@ApiOperation(value="get the list of all employees sorted by the last event date")
 	@GetMapping("/getEmployeesSortedLastEventDate")
 	public ResponseEntity<List<Employee>> getEmployeesSortedLastEventDate() {
 		return ResponseEntity.ok(employeeService.getEmployeesSortedLastEventDate());
 	}
 
+	@ApiOperation(value="get The employee who has to organize the next event")
 	@GetMapping("/getEmployeeWhoOrganizeNextEvent")
 	public ResponseEntity<Employee> findEmployeeWhoOrganizeNextEvent() {
 		final Optional<Employee> employee = employeeService.findEmployeeWhoOrganizeNextEvent();
