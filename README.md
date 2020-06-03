@@ -20,5 +20,8 @@ http://localhost:8081/swagger-ui.html#/
 
 ## Docker pull and run
 
-docker pull bautistajf/flexit-service
-docker run -p 8081:8081 --name flexit-service bautistajf/flexit-service:latest
+
+docker pull bautistajf/flexit-service      .
+
+
+docker run -p 8081:8081 --name flexit-service bautistajf/flexit-service:latest      .
